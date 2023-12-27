@@ -1,0 +1,39 @@
+:root {
+    --card-width: 300px;
+    --card-height: 300px;
+    --card-color: rgb(219, 219, 219);
+}
+
+.title {
+    font-family: sans-serif;
+    font-size: 24px;
+}
+
+.add-button {
+    min-width: 34px;
+    border-radius: 100px;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    font-size: 25px;
+    background-color: white;
+}
+
+.card_list {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    height: var(--card-height);
+    width: var(--card-width);
+    background-color: var(--card-color);
+    margin-top: 20px;
+    border-radius: 20px;
+    padding: 5px 20px;
+}
+
+.card-title {
+    font-family: sans-serif;
+    font-size: 24px;
+}
