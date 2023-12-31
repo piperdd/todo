@@ -1,3 +1,5 @@
+
+
 var card = document.querySelector(".card");
 var cardList = document.querySelector(".card-list");
 
@@ -10,13 +12,16 @@ document.querySelector(".add-button").addEventListener("click", ()=>{
     newTitle.placeholder = "Card Title";
     var newTodoList = document.createElement("div");
     newTodoList.classList.add("todo-list");
+    newTodoList.id = "sortable";
     var newAddButton = document.createElement("button");
     newAddButton.classList.add("add-item");
     newAddButton.textContent = "+";
     newCard.appendChild(newTitle);
-    newCard.appendChild(newTodoList);
     newCard.appendChild(newAddButton);
+    newCard.appendChild(newTodoList);
     cardList.appendChild(newCard);
+
+    
 })
 
 // cardList.addEventListener("dragstart", (e) => {
@@ -37,7 +42,7 @@ document.querySelector(".add-button").addEventListener("click", ()=>{
 
 cardList.addEventListener("click", (e)=>{
     if(e.target.classList.contains("add-item")){
-        var todoList = e.target.parentElement;
+        var todoList = e.target.parentElement.querySelector(".todo-list");
         var newItem = document.createElement("div");
         newItem.classList.add('todo');
         //add drag icon
@@ -66,6 +71,12 @@ cardList.addEventListener("click", (e)=>{
         // cursor automatically selects new text box
         textBox.focus();
         textBox.select();
+
+        Sortable.create(sortable, {
+            animation: 150,
+            // sort: true
+            ghostClass: 'ghost'
+        });
     }
     if(e.target.classList.contains("remove-button")){
         e.target.parentElement.remove();
