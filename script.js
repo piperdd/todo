@@ -19,30 +19,49 @@ document.querySelector(".add-button").addEventListener("click", ()=>{
     cardList.appendChild(newCard);
 })
 
+// cardList.addEventListener("dragstart", (e) => {
+//     if(e.target.classList.contains("todo-icon")){
+//         const dragElem = e.target.parentElement;
+//         var clone = dragElem.cloneNode(true);
+//         console.log(clone);
+//         clone.classList.add("dragging");
+//         document.body.appendChild(clone);
+
+//         // e.dataTransfer.setData("text/plain", e.target.id);
+
+//         e.dataTransfer.setDragImage(clone, 0, 0);
+//         console.log("hello")
+
+//     }
+// })
+
 cardList.addEventListener("click", (e)=>{
     if(e.target.classList.contains("add-item")){
         var todoList = e.target.parentElement;
         var newItem = document.createElement("div");
-        newItem.classList.add('todo')
+        newItem.classList.add('todo');
+        //add drag icon
+        var dragIcon = document.createElement("img");
+        dragIcon.src = "src/grip-lines-solid.svg";
+        dragIcon.classList.add("todo-icon");
+        dragIcon.draggable = "true";
         //add checkBox
         var checkBox = document.createElement("input");
         checkBox.type = "checkbox";
-        checkBox.classList.add('todo-check')
-        //label (not used)
-        var label = document.createElement("label");
-        label.htmlFor = "id";
+        checkBox.classList.add('todo-check');
         //add textbox
         var textBox = document.createElement("input");
         textBox.type = "text";
-        textBox.classList.add('todo-desc')
+        textBox.classList.add('todo-desc');
         //add remove button
         var removeButton = document.createElement("button");
         removeButton.textContent = "X";
-        removeButton.className = "remove-button"
-        label.appendChild(document.createTextNode("hello"));
+        removeButton.className = "remove-button";
+        newItem.appendChild(dragIcon);
         newItem.appendChild(checkBox);
         newItem.appendChild(textBox);
         newItem.appendChild(removeButton);
+        // newItem.draggable = "true";
         todoList.appendChild(newItem);
         // cursor automatically selects new text box
         textBox.focus();
