@@ -1,9 +1,17 @@
-
+Sortable.create(list, {
+    animation: 150,
+    // sort: true
+    ghostClass: 'ghost'
+});
 
 var card = document.querySelector(".card");
 var cardList = document.querySelector(".card-list");
 
+var cardCount = 0;
+
 document.querySelector(".add-button").addEventListener("click", ()=>{
+    let temp = `sortable${cardCount}`;
+    
     var newCard = document.createElement("div");
     newCard.classList.add("card");
     var newTitle = document.createElement("input");
@@ -12,7 +20,7 @@ document.querySelector(".add-button").addEventListener("click", ()=>{
     newTitle.placeholder = "Card Title";
     var newTodoList = document.createElement("div");
     newTodoList.classList.add("todo-list");
-    newTodoList.id = "sortable";
+    newTodoList.id = temp;
     var newAddButton = document.createElement("button");
     newAddButton.classList.add("add-item");
     newAddButton.textContent = "+";
@@ -20,6 +28,14 @@ document.querySelector(".add-button").addEventListener("click", ()=>{
     newCard.appendChild(newAddButton);
     newCard.appendChild(newTodoList);
     cardList.appendChild(newCard);
+
+    Sortable.create(eval(temp), {
+        animation: 150,
+        // sort: true  
+        ghostClass: 'ghost'
+    });
+
+    cardCount++;
 
     
 })
@@ -72,11 +88,7 @@ cardList.addEventListener("click", (e)=>{
         textBox.focus();
         textBox.select();
 
-        Sortable.create(sortable, {
-            animation: 150,
-            // sort: true
-            ghostClass: 'ghost'
-        });
+        
     }
     if(e.target.classList.contains("remove-button")){
         e.target.parentElement.remove();
