@@ -14,17 +14,25 @@ document.querySelector(".add-button").addEventListener("click", ()=>{
     
     var newCard = document.createElement("div");
     newCard.classList.add("card");
+
+    var newHeader = document.createElement("div");
+    newHeader.classList.add("card-header")
     var newTitle = document.createElement("input");
     newTitle.type = "text";
     newTitle.classList.add("card-title");
     newTitle.placeholder = "Card Title";
+    var newRemoveCardButton = document.createElement("button");
+    newRemoveCardButton.classList.add("remove-card-button");
+    newRemoveCardButton.textContent = "X"
     var newTodoList = document.createElement("div");
     newTodoList.classList.add("todo-list");
     newTodoList.id = temp;
     var newAddButton = document.createElement("button");
     newAddButton.classList.add("add-item");
     newAddButton.textContent = "+";
-    newCard.appendChild(newTitle);
+    newHeader.appendChild(newTitle);
+    newHeader.appendChild(newRemoveCardButton);
+    newCard.appendChild(newHeader);
     newCard.appendChild(newAddButton);
     newCard.appendChild(newTodoList);
     cardList.appendChild(newCard);
@@ -92,6 +100,9 @@ cardList.addEventListener("click", (e)=>{
     }
     if(e.target.classList.contains("remove-button")){
         e.target.parentElement.remove();
+    }
+    if(e.target.classList.contains("remove-card-button")){
+        e.target.parentElement.parentElement.remove();
     }
 });
 

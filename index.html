@@ -4,17 +4,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+    <!-- <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script> -->
 </head><body>
     <h1 class="title">To-Do list</h1>
     <button class="add-button">+</button>
     <div id="list" class="card-list">
-        <!-- <div class="card">
-            <input type="text" class="card-title", placeholder="Card Title"></h3>
+        <div class="card">
+            <div class="card-header">
+                <input type="text" class="card-title", placeholder="Card Title"></h3>
+                <button class="remove-card-button">X</button>
+            </div>
             <button class="add-item">+</button>
             <div class="todo-list"></div>
-        </div> -->
+        </div>
     </div>
+    <script src="src/Sortable.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
